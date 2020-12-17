@@ -40,22 +40,31 @@
 
 ### Установка
 
-#### Установка docker и docker-compose
+#### Установка docker и docker-compose:
 
 Если у вас уже установлены docker и docker-compose, этот шаг можно пропустить, иначе можно воспользоваться официальной [инструкцией](https://docs.docker.com/engine/install/).
 
-#### Запуск контейнера
+#### Создайте файл .env с данным содержимым:
+```
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+DB_HOST=db
+DB_PORT=5432
+```
+#### Запуск контейнера:
 ```bash
 docker-compose up
 ```
-#### Выключение контейнера
+#### Выключение контейнера:
 ```bash
 docker-compose down
 ```
 
 ### Использование
 
-#### Применить миграции:
+#### Применение миграции:
 ```bash
 docker-compose run web python manage.py migrate
 ```
@@ -63,7 +72,7 @@ docker-compose run web python manage.py migrate
 ```bash
 docker-compose run web python manage.py loaddata fixtures/fixtures.json
 ```
-#### Создание суперпользователя Django
+#### Создание суперпользователя Django:
 ```bash
 docker-compose run web python manage.py createsuperuser
 ```
